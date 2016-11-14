@@ -90,6 +90,8 @@ public class Cloudlet {
 
 	/** The ToS for sending Cloudlet over the network. */
 	private int netToS;
+	
+	private boolean isChecked;
 
 	// //////////////////////////////////////////
 	// Below are CONSTANTS attributes
@@ -336,6 +338,7 @@ public class Cloudlet {
 		finishTime = -1.0;    // meaning this Cloudlet hasn't finished yet
 		classType = 0;
 		netToS = 0;
+		isChecked = false;
 
 		// Cloudlet length, Input and Output size should be at least 1 byte.
 		this.cloudletLength = Math.max(1, cloudletLength);
@@ -1463,4 +1466,11 @@ public class Cloudlet {
 		return getUtilizationModelBw().getUtilization(time);
 	}
 
+	public boolean getIsChecked() {
+		return this.isChecked;
+	}
+	
+	public void setIsChecked(final boolean isChecked) {
+		this.isChecked = isChecked;
+	}
 }

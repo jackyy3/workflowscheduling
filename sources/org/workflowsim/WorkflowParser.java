@@ -99,7 +99,7 @@ public final class WorkflowParser {
         this.daxPaths = Parameters.getDAXPaths();
         this.jobIdStartsFrom = 1;
 
-        setTaskList(new ArrayList<>());
+        setTaskList(new ArrayList<Task>());
     }
 
     /**

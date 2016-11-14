@@ -24,6 +24,7 @@ import org.workflowsim.examples.failure.*;
 import org.workflowsim.examples.failure.clustering.*;
 import org.workflowsim.examples.planning.*;
 import org.workflowsim.examples.scheduling.*;
+import org.workflowsim.utils.Parameters;
 import org.workflowsim.examples.cost.*;
 
 /**
@@ -87,11 +88,18 @@ public class WorkflowSimAllExamplesTester {
             /**
              * Scheduling Algorithms
              */
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.DATA.toString() + " ************");
             DataAwareSchedulingAlgorithmExample.main(args);
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.FCFS.toString() + " ************");
             FCFSSchedulingAlgorithmExample.main(args);
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.MAXMIN.toString() + " ************");
             MAXMINSchedulingAlgorithmExample.main(args);
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.MCT.toString() + " ************");
             MCTSchedulingAlgorithmExample.main(args);
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.MINMIN.toString() + " ************");
             MINMINSchedulingAlgorithmExample.main(args);
+            System.out.println("\n*************** "+Parameters.SchedulingAlgorithm.MAXCHILD.toString() + " ************");
+            MAXCHILDSchedulingAlgorithmExample.main(args);
         } catch (Exception e) {
             Log.printLine("ERROR: please check your workflow examples");
             e.printStackTrace();

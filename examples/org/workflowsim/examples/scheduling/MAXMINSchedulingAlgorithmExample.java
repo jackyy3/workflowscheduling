@@ -58,7 +58,7 @@ public class MAXMINSchedulingAlgorithmExample extends DataAwareSchedulingAlgorit
             /**
              * Should change this based on real physical path
              */
-            String daxPath = "/Users/weiweich/NetBeansProjects/WorkflowSim-1.0/config/dax/Montage_100.xml";
+            String daxPath = "/Users/zxing/git/WorkflowSim-1.0/config/dax/Montage_100.xml";
 
             File daxFile = new File(daxPath);
             if (!daxFile.exists()) {

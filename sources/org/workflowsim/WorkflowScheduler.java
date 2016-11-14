@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.DatacenterBroker;
+import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.core.CloudSimTags;
@@ -29,6 +30,7 @@ import org.workflowsim.scheduling.DataAwareSchedulingAlgorithm;
 import org.workflowsim.scheduling.BaseSchedulingAlgorithm;
 import org.workflowsim.scheduling.FCFSSchedulingAlgorithm;
 import org.workflowsim.scheduling.MCTSchedulingAlgorithm;
+import org.workflowsim.scheduling.MaxChildSchedulingAlgorithm;
 import org.workflowsim.scheduling.MaxMinSchedulingAlgorithm;
 import org.workflowsim.scheduling.MinMinSchedulingAlgorithm;
 import org.workflowsim.scheduling.RoundRobinSchedulingAlgorithm;
@@ -163,6 +165,9 @@ public class WorkflowScheduler extends DatacenterBroker {
             case ROUNDROBIN:
                 algorithm = new RoundRobinSchedulingAlgorithm();
                 break;
+            case MAXCHILD:
+            	algorithm = new MaxChildSchedulingAlgorithm();
+            	break;
             default:
                 algorithm = new StaticSchedulingAlgorithm();
                 break;
@@ -362,7 +367,7 @@ public class WorkflowScheduler extends DatacenterBroker {
      */
     @Override
     protected void processResourceCharacteristicsRequest(SimEvent ev) {
-        setDatacenterCharacteristicsList(new HashMap<>());
+        setDatacenterCharacteristicsList(new HashMap<Integer, DatacenterCharacteristics>());
         Log.printLine(CloudSim.clock() + ": " + getName() + ": Cloud Resource List received with "
                 + getDatacenterIdsList().size() + " resource(s)");
         for (Integer datacenterId : getDatacenterIdsList()) {

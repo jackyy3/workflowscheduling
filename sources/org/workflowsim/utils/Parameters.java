@@ -22,7 +22,6 @@ import org.cloudbus.cloudsim.Log;
  * This class includes most parameters a user can specify in a configuration
  * file
  *
- * @author Weiwei Chen
  * @since WorkflowSim Toolkit 1.0
  * @date Apr 9, 2013
  */
@@ -36,7 +35,7 @@ public class Parameters {
     public enum SchedulingAlgorithm {
 
         MAXMIN, MINMIN, MCT, DATA, 
-        STATIC, FCFS, ROUNDROBIN, INVALID
+        STATIC, FCFS, ROUNDROBIN, INVALID, MAXCHILD
     }
     
     /**

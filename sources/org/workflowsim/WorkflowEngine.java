@@ -76,12 +76,12 @@ public final class WorkflowEngine extends SimEntity {
         this(name, 1);
     }
 
-    public WorkflowEngine(String name, int schedulers) throws Exception {
+    public <T extends Cloudlet> WorkflowEngine(String name, int schedulers) throws Exception {
         super(name);
 
-        setJobsList(new ArrayList<>());
-        setJobsSubmittedList(new ArrayList<>());
-        setJobsReceivedList(new ArrayList<>());
+        setJobsList(new ArrayList<Job>());
+        setJobsSubmittedList(new ArrayList<T>());
+        setJobsReceivedList(new ArrayList<T>());
 
         jobsSubmitted = 0;
 
