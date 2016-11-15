@@ -98,7 +98,7 @@ public class WorkflowSimBasicExample1 {
              * Should change this based on real physical path
              */
             String daxPath = "/Users/zxing/git/WorkflowSim-1.0/config/dax/Montage_100.xml";
-            File daxFile = new File(daxPath);
+            File daxFile = new File(args[0]);
             if (!daxFile.exists()) {
                 Log.printLine("Warning: Please replace daxPath with the physical path in your working environment!");
                 return;
