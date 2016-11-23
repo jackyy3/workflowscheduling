@@ -21,17 +21,6 @@ import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Consts;
 import org.cloudbus.cloudsim.UtilizationModelFull;
 
-/**
- * Task is an extention to Cloudlet in CloudSim. It supports the implementation
- * of dependencies between tasks, which includes a list of parent tasks and a
- * list of child tasks that it has. In WorkflowSim, the Workflow Engine assure
- * that a task is released to the scheduler (ready to run) when all of its
- * parent tasks have completed successfully
- *
- * @author Weiwei Chen
- * @since WorkflowSim Toolkit 1.0
- * @date Apr 9, 2013
- */
 public class Task extends Cloudlet {
 
     /*
@@ -71,6 +60,8 @@ public class Task extends Cloudlet {
      * update finish_time)
      */
     private double taskFinishTime;
+    
+    private long workflowId;
 
     /**
      * Allocates a new Task object. The task length should be greater than or
@@ -321,4 +312,18 @@ public class Task extends Cloudlet {
         cost += costPerBw * fileSize;
         return cost;
     }
+
+	/**
+	 * @return the workflowId
+	 */
+	public long getWorkflowId() {
+		return workflowId;
+	}
+
+	/**
+	 * @param workflowId the workflowId to set
+	 */
+	public void setWorkflowId(long workflowId) {
+		this.workflowId = workflowId;
+	}
 }
