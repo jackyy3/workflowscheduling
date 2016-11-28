@@ -1,6 +1,6 @@
 package org.workflowscheduling;
 
-public class ArrivalTimeComparator<T> implements WorkflowComparator<T> {
+public class ArrivalTimeComparator implements WorkflowComparator<Workflow> {
 
 	public static final String COMPARISONFIELD = "ArrivalTime";
 
