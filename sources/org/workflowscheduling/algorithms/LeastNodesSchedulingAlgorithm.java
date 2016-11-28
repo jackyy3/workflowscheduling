@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.workflowscheduling.ArrivalTimeComparator;
+import org.workflowscheduling.LeastTasksComparator;
 import org.workflowscheduling.Workflow;
 
-public class FCFSWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
+public class LeastNodesSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
 	private WorkflowSchedulingAlgorithmType workflowSchedulingAlgorithmType;
-
-	public FCFSWorkflowSchedulingAlgorithm(final WorkflowSchedulingAlgorithmType workflowSchedulingAlgorithmType) {
+	
+	public LeastNodesSchedulingAlgorithm(
+			final WorkflowSchedulingAlgorithmType workflowSchedulingAlgorithmType) {
 		this.workflowSchedulingAlgorithmType = workflowSchedulingAlgorithmType;
 	}
 	
@@ -20,11 +21,10 @@ public class FCFSWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgori
 		return this.workflowSchedulingAlgorithmType;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Workflow> scheduleWorkflows(List<Workflow> workflows) {
 		List<Workflow> orderedWorkflows = new ArrayList<>(workflows);
-		Collections.sort(orderedWorkflows, new ArrivalTimeComparator());
+		Collections.sort(orderedWorkflows, new LeastTasksComparator());
 		return orderedWorkflows;
 	}
 

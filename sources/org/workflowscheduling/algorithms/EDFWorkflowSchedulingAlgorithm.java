@@ -1,7 +1,9 @@
 package org.workflowscheduling.algorithms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
+import org.workflowscheduling.DeadlineComparator;
 import org.workflowscheduling.Workflow;
 
 public class EDFWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
@@ -19,8 +21,9 @@ public class EDFWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorit
 
 	@Override
 	public List<Workflow> scheduleWorkflows(List<Workflow> workflows) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Workflow> orderedWorkflows = new ArrayList<>(workflows);
+		Collections.sort(orderedWorkflows, new DeadlineComparator());
+		return orderedWorkflows;
 	}
 
 }
