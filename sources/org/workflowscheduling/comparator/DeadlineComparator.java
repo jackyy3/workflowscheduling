@@ -1,4 +1,7 @@
-package org.workflowscheduling;
+package org.workflowscheduling.comparator;
+
+import org.workflowscheduling.BaseWorkflow;
+import org.workflowscheduling.Workflow;
 
 public class DeadlineComparator implements WorkflowComparator<Workflow> {
 

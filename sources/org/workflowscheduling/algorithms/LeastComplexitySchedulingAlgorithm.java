@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.workflowscheduling.LeastTasksComparator;
 import org.workflowscheduling.Workflow;
+import org.workflowscheduling.comparator.LeastTasksComparator;
 
 public class LeastComplexitySchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 

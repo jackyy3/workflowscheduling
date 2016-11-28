@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.workflowscheduling.ArrivalTimeComparator;
 import org.workflowscheduling.Workflow;
+import org.workflowscheduling.comparator.ArrivalTimeComparator;
 
 public class FCFSWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 

@@ -3,8 +3,9 @@ package org.workflowscheduling.algorithms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.workflowscheduling.DeadlineComparator;
+
 import org.workflowscheduling.Workflow;
+import org.workflowscheduling.comparator.DeadlineComparator;
 
 public class EDFWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
