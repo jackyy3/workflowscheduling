@@ -3,6 +3,7 @@ package org.workflowscheduling;
 import java.util.List;
 
 import org.cloudbus.cloudsim.Cloudlet;
+import org.workflowsim.Task;
 
 public class BaseWorkflow implements Workflow {
 	private long arrivalTime;
@@ -13,7 +14,7 @@ public class BaseWorkflow implements Workflow {
 	private long actualCompletionTime;
 	private long actualStartTime;
 	private long actualCost;
-	private List<? extends Cloudlet> tasks;
+	private List<Task> tasks;
 	
 	public BaseWorkflow(final String daxPath){
 		this.daxPath = daxPath;
@@ -39,7 +40,7 @@ public class BaseWorkflow implements Workflow {
 	public long getArrivalTime() {
 		return this.arrivalTime;
 	}
-	
+
 	public long getSimpleMissingDeadlineCost() {
 		return this.simpleMissingDeadlineCost;
 	}
@@ -72,11 +73,11 @@ public class BaseWorkflow implements Workflow {
 		this.actualCost = actualCost;
 	}
 	
-	public void setTasks(final List<? extends Cloudlet> tasks) {
+	public void setTasks(final List<Task> tasks) {
 		this.tasks = tasks;
 	}
 	
-	public void addTask(final Cloudlet task) {
+	public void addTask(final Task task) {
 		this.getTasks().add(task);
 	}
 	

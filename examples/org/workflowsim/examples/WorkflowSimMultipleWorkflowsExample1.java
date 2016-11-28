@@ -35,6 +35,9 @@ import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
+import org.workflowscheduling.algorithms.WorkflowSchedulingAlgorithmType;
+import org.workflowscheduling.algorithms.iml.WorkflowFileSchedulingAlgorithm;
+import org.workflowscheduling.factory.FileWorkflowSchedulingAlgorithmFactory;
 import org.workflowsim.CondorVM;
 import org.workflowsim.WorkflowDatacenter;
 import org.workflowsim.Job;
@@ -96,33 +99,64 @@ public class WorkflowSimMultipleWorkflowsExample1 {
              * exact vmNum would be smaller than that. Take care.
              */
             int vmNum = 20;//number of vms;
+            
+            /**
+             * Since we are using MINMIN scheduling algorithm, the planning
+             * algorithm should be INVALID such that the planner would not
+             * override the result of the scheduler
+             */
+            Parameters.SchedulingAlgorithm sch_method = Parameters.SchedulingAlgorithm.FCFS;
+            WorkflowSchedulingAlgorithmType wsch_method = WorkflowSchedulingAlgorithmType.FCFS;
+            Parameters.PlanningAlgorithm pln_method = Parameters.PlanningAlgorithm.INVALID;
+            ReplicaCatalog.FileSystem file_system = ReplicaCatalog.FileSystem.SHARED;
+
+            
+            
             /**
              * Should change this based on real physical path
              */
             List<String> daxPaths = new ArrayList<>();
-            daxPaths.add("/Users/weiweich/NetBeansProjects/WorkflowSim-1.0/config/dax/Montage_100.xml");
-            daxPaths.add("/Users/weiweich/NetBeansProjects/WorkflowSim-1.0/config/dax/Montage_25.xml");
-            daxPaths.add("/Users/weiweich/NetBeansProjects/WorkflowSim-1.0/config/dax/Montage_1000.xml");
+            daxPaths.add("Montage_100.xml");
+            daxPaths.add("Montage_25.xml");
+            daxPaths.add("Montage_50.xml");
+            daxPaths.add("Montage_1000.xml");
+            daxPaths.add("Sipht_100.xml");
+            daxPaths.add("Sipht_1000.xml");
+            daxPaths.add("Sipht_30.xml");
+            daxPaths.add("Sipht_60.xml");
+            
+            daxPaths.add("Inspiral_100.xml");
+            daxPaths.add("Inspiral_1000.xml");
+            daxPaths.add("Inspiral_30.xml");
+            daxPaths.add("Inspiral_50.xml");
+            
+            daxPaths.add("CyberShake_100.xml");
+            daxPaths.add("CyberShake_1000.xml");
+            daxPaths.add("CyberShake_30.xml");
+            daxPaths.add("CyberShake_50.xml");
+            
+            daxPaths.add("Epigenomics_100.xml");
+            daxPaths.add("Epigenomics_24.xml");
+            daxPaths.add("Epigenomics_46.xml");
+            daxPaths.add("Epigenomics_997.xml");
+            
+            List<String> orderedWorkflows = new ArrayList<>();
+            WorkflowFileSchedulingAlgorithm workflowFileScheAlgorithm =
+            		(new FileWorkflowSchedulingAlgorithmFactory()).
+            		getWorkflowSchedulingAlgorithm(wsch_method);
+            orderedWorkflows.addAll(workflowFileScheAlgorithm.scheduleWorkflows(daxPaths));
+            
             /**
              * Check every file must exist
              */
             File daxFile;
-            for (String daxPath : daxPaths) {
+            for (String daxPath : orderedWorkflows) {
                 daxFile = new File(daxPath);
                 if (!daxFile.exists()) {
                     Log.printLine("Warning: Please replace daxPath with the physical path in your working environment!");
                     return;
                 }
             }
-
-            /**
-             * Since we are using MINMIN scheduling algorithm, the planning
-             * algorithm should be INVALID such that the planner would not
-             * override the result of the scheduler
-             */
-            Parameters.SchedulingAlgorithm sch_method = Parameters.SchedulingAlgorithm.MINMIN;
-            Parameters.PlanningAlgorithm pln_method = Parameters.PlanningAlgorithm.INVALID;
-            ReplicaCatalog.FileSystem file_system = ReplicaCatalog.FileSystem.SHARED;
 
             /**
              * No overheads
@@ -138,7 +172,7 @@ public class WorkflowSimMultipleWorkflowsExample1 {
             /**
              * Initialize static parameters
              */
-            Parameters.init(vmNum, daxPaths, null,
+            Parameters.init(vmNum, orderedWorkflows, null,
                     null, op, cp, sch_method, pln_method,
                     null, 0);
             ReplicaCatalog.init(file_system);

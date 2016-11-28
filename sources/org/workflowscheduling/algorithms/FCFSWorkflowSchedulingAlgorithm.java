@@ -2,7 +2,7 @@ package org.workflowscheduling.algorithms;
 
 import java.util.List;
 
-import org.cloudbus.cloudsim.Cloudlet;
+import org.workflowscheduling.Workflow;
 
 public class FCFSWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
@@ -18,9 +18,8 @@ public class FCFSWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgori
 	}
 
 	@Override
-	public List<? extends Cloudlet> scheduleWorkflows(List<? extends Cloudlet> workflows) {
-		// call scheduling algorithm for Cloudlet.
-		return null;
+	public List<Workflow> scheduleWorkflows(List<Workflow> workflows) {
+		return workflows;
 	}
 
 }

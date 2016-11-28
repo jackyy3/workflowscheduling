@@ -52,6 +52,9 @@ public class SimpleWorkflowSchedulingAlgorithmExample {
              */
             Parameters.SchedulingAlgorithm sch_method = Parameters.SchedulingAlgorithm.FCFS;
             Parameters.PlanningAlgorithm pln_method = Parameters.PlanningAlgorithm.INVALID;
+            
+            Parameters.WorkflowSchedulingAlgorithm w_sch_method = Parameters.WorkflowSchedulingAlgorithm.FCFS;
+            
             ReplicaCatalog.FileSystem file_system = ReplicaCatalog.FileSystem.LOCAL;
 
             /**
@@ -70,7 +73,7 @@ public class SimpleWorkflowSchedulingAlgorithmExample {
              */
             Parameters.init(vmNum, daxPath, null,
                     null, op, cp, sch_method, pln_method,
-                    null, 0);
+                    null, w_sch_method, 0);
             ReplicaCatalog.init(file_system);
 
             // before creating any entities.

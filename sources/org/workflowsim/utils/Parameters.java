@@ -38,6 +38,10 @@ public class Parameters {
         STATIC, FCFS, ROUNDROBIN, INVALID, MAXCHILD
     }
     
+    public enum WorkflowSchedulingAlgorithm {
+    	FCFS, COSTBASED, EDF, LEAST_COMPLEXITY, LEAST_NODES
+    }
+    
     /**
      * Planning Algorithm (Global Scheduling Algorithm)
      * 
@@ -92,6 +96,8 @@ public class Parameters {
      * Scheduling mode
      */
     private static SchedulingAlgorithm schedulingAlgorithm;
+    
+    private static WorkflowSchedulingAlgorithm workflowSchedulingAlgorithm;
     
     /**
      * Planning mode
@@ -184,10 +190,33 @@ public class Parameters {
      * @param op, overhead parameters
      * @param cp, clustering parameters
      * @param scheduler, scheduling mode
+     * @param workflowscheduler, scheduling mode
      * @param planner, planning mode
      * @param rMethod , reducer mode
      * @param dl, deadline
      */
+    public static void init(
+            int vm, String dax, String runtime, String datasize,
+            OverheadParameters op, ClusteringParameters cp,
+            SchedulingAlgorithm scheduler, PlanningAlgorithm planner, String rMethod,
+            WorkflowSchedulingAlgorithm workflowScheduler,
+            long dl) {
+
+        cParams = cp;
+        vmNum = vm;
+        daxPath = dax;
+        runtimePath = runtime;
+        datasizePath = datasize;
+
+        oParams = op;
+        schedulingAlgorithm = scheduler;
+        workflowSchedulingAlgorithm = workflowScheduler;
+        planningAlgorithm = planner;
+        reduceMethod = rMethod;
+        deadline = dl;
+        maxDepth = 0;
+    }
+    
     public static void init(
             int vm, String dax, String runtime, String datasize,
             OverheadParameters op, ClusteringParameters cp,
@@ -202,11 +231,13 @@ public class Parameters {
 
         oParams = op;
         schedulingAlgorithm = scheduler;
+        workflowSchedulingAlgorithm = WorkflowSchedulingAlgorithm.FCFS;
         planningAlgorithm = planner;
         reduceMethod = rMethod;
         deadline = dl;
         maxDepth = 0;
     }
+    
     
     /**
      * A static function so that you can specify them in any place
@@ -218,10 +249,34 @@ public class Parameters {
      * @param op, overhead parameters
      * @param cp, clustering parameters
      * @param scheduler, scheduling mode
+     * @param workflowscheduler, scheduling mode
      * @param planner, planning mode
      * @param rMethod , reducer mode
      * @param dl, deadline of a workflow
      */
+    public static void init(
+            int vm, List<String> dax, String runtime, String datasize,
+            OverheadParameters op, ClusteringParameters cp,
+            SchedulingAlgorithm scheduler, PlanningAlgorithm planner, String rMethod,
+            WorkflowSchedulingAlgorithm workflowScheduler,
+            long dl) {
+
+        cParams = cp;
+        vmNum = vm;
+        daxPaths = dax;
+        runtimePath = runtime;
+        datasizePath = datasize;
+
+        oParams = op;
+        schedulingAlgorithm = scheduler;
+        workflowSchedulingAlgorithm = workflowScheduler;
+        planningAlgorithm = planner;
+        reduceMethod = rMethod;
+        deadline = dl;
+        maxDepth = 0;
+    }
+    
+    
     public static void init(
             int vm, List<String> dax, String runtime, String datasize,
             OverheadParameters op, ClusteringParameters cp,
@@ -236,6 +291,7 @@ public class Parameters {
 
         oParams = op;
         schedulingAlgorithm = scheduler;
+        workflowSchedulingAlgorithm = WorkflowSchedulingAlgorithm.FCFS;
         planningAlgorithm = planner;
         reduceMethod = rMethod;
         deadline = dl;
@@ -352,6 +408,10 @@ public class Parameters {
      */
     public static SchedulingAlgorithm getSchedulingAlgorithm() {
         return schedulingAlgorithm;
+    }
+    
+    public static WorkflowSchedulingAlgorithm getWorkflowSchedulingAlgorithm() {
+        return workflowSchedulingAlgorithm;
     }
     
     /**

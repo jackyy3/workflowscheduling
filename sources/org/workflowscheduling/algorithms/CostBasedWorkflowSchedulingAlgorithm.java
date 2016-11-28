@@ -2,7 +2,7 @@ package org.workflowscheduling.algorithms;
 
 import java.util.List;
 
-import org.cloudbus.cloudsim.Cloudlet;
+import org.workflowscheduling.Workflow;
 
 public class CostBasedWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
@@ -19,7 +19,7 @@ public class CostBasedWorkflowSchedulingAlgorithm implements WorkflowSchedulingA
 	}
 
 	@Override
-	public List<? extends Cloudlet> scheduleWorkflows(List<? extends Cloudlet> workflows) {
+	public List<Workflow> scheduleWorkflows(List<Workflow> workflows) {
 		// TODO Auto-generated method stub
 		return null;
 	}
