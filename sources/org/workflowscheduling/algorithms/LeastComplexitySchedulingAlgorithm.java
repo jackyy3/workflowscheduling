@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.workflowscheduling.Workflow;
 import org.workflowscheduling.comparator.LeastTasksComparator;
+import org.workflowscheduling.pool.SchedulingPriority;
 
 public class LeastComplexitySchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
@@ -26,6 +27,12 @@ public class LeastComplexitySchedulingAlgorithm implements WorkflowSchedulingAlg
 		List<Workflow> orderedWorkflows = new ArrayList<>(workflows);
 		Collections.sort(orderedWorkflows, new LeastTasksComparator());
 		return orderedWorkflows;
+	}
+
+	@Override
+	public SchedulingPriority calculateSchedulingPriority(Workflow workflow) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

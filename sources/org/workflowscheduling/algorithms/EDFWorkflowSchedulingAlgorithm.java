@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.workflowscheduling.Workflow;
 import org.workflowscheduling.comparator.DeadlineComparator;
+import org.workflowscheduling.pool.SchedulingPriority;
 
 public class EDFWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorithm {
 
@@ -25,6 +26,12 @@ public class EDFWorkflowSchedulingAlgorithm implements WorkflowSchedulingAlgorit
 		List<Workflow> orderedWorkflows = new ArrayList<>(workflows);
 		Collections.sort(orderedWorkflows, new DeadlineComparator());
 		return orderedWorkflows;
+	}
+
+	@Override
+	public SchedulingPriority calculateSchedulingPriority(Workflow workflow) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

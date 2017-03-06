@@ -2,7 +2,7 @@ package org.workflowscheduling;
 
 import java.util.List;
 
-import org.cloudbus.cloudsim.Cloudlet;
+import org.workflowscheduling.pool.SchedulingPriority;
 import org.workflowsim.Task;
 
 public class BaseWorkflow implements Workflow {
@@ -15,6 +15,7 @@ public class BaseWorkflow implements Workflow {
 	private long actualStartTime;
 	private long actualCost;
 	private List<Task> tasks;
+	private SchedulingPriority schedulingPriority;
 	
 	public BaseWorkflow(final String daxPath){
 		this.daxPath = daxPath;
@@ -78,7 +79,7 @@ public class BaseWorkflow implements Workflow {
 	}
 	
 	public void addTask(final Task task) {
-		this.getTasks().add(task);
+		this.tasks.add(task);
 	}
 	
 	public List getTasks() {
@@ -88,5 +89,19 @@ public class BaseWorkflow implements Workflow {
 	@Override
 	public long getWorkflowId() {
 		return this.workflowId;
+	}
+
+	/**
+	 * @return the schedulingPriority
+	 */
+	public SchedulingPriority getSchedulingPriority() {
+		return schedulingPriority;
+	}
+
+	/**
+	 * @param schedulingPriority the schedulingPriority to set
+	 */
+	public void setSchedulingPriority(final SchedulingPriority schedulingPriority) {
+		this.schedulingPriority = schedulingPriority;
 	}
 }
